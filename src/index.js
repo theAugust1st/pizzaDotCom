@@ -17,16 +17,16 @@ function Menu() {
         Authentic Italian cuisine. 6 creative dishes to choose from. All
         from our stone oven, all organic, all delicious.
       </p>
+      {pizzaData.length > 0?
       <ul className='pizzas'>
         {pizzaData.map((pizza)=>(
           <Pizza {...pizza} key={pizza.name}></Pizza>
         ))}
-      </ul>
+      </ul>:<p>We are adding some pizza soon......</p>}
     </main>
   )
 }
 function Pizza(props){
-  console.log(props)
   return (
     <div className='pizza'>
       <img src={props.photoName} alt={props.name} />
