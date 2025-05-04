@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';     
 import pizzaData  from './data.js'; 
-console.log([...pizzaData])
 function Heading() {
   return (
     <header className='header'>
@@ -18,20 +17,26 @@ function Menu() {
         Authentic Italian cuisine. 6 creative dishes to choose from. All
         from our stone oven, all organic, all delicious.
       </p>
-      <ul>
-        {pizzaData.map((pizza)=>[
-          <li key={pizza.name}>
-            <div>
-            <img src={pizza.photoName} alt={pizza.name} />
-            <h3>{pizza.name}</h3>
-            <p>{pizza.ingredients}</p>
-            <span>{pizza.price}</span>
-            </div>
-          </li>
-        ])}
+      <ul className='pizzas'>
+        {pizzaData.map((pizza)=>(
+          <Pizza {...pizza} key={pizza.name}></Pizza>
+        ))}
       </ul>
     </main>
   )
+}
+function Pizza(props){
+  console.log(props)
+  return (
+    <div className='pizza'>
+      <img src={props.photoName} alt={props.name} />
+      <div>
+      <h3>{props.name}</h3>
+      <p>{props.ingredients}</p>
+      <span>{props.price}</span>
+      </div>
+    </div>
+  );
 }
 function App() {
   return (
